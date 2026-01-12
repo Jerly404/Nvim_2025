@@ -1,130 +1,111 @@
 return {
   {
-    "catppuccin/nvim",
-    name = "catppuccin",
+    "rebelot/kanagawa.nvim",
+    name = "kanagawa",
     lazy = false,
     priority = 1000,
     opts = {
-      flavour = "mocha",
-      transparent_background = true,
-      -- Habilitamos estilos específicos para que acepten cursivas
+      compile = true,
+      transparent = true, -- Mantiene la estética con el blur de Kitty
+      theme = "dragon",
       styles = {
-        comments = { "italic" },
-        conditionals = { "italic" },
-        loops = { "italic" },
-        functions = { "bold" },
-        keywords = { "italic" },
-        strings = {},
-        variables = { "italic" }, -- Esto hace que la mayoría del código sea cursiva
-        numbers = {},
-        booleans = { "bold" },
-        properties = {},
-        types = { "italic" },
-        operators = {},
+        comment = { italic = true },
+        keyword = { italic = true, bold = true }, -- Más presencia
+        function_ = { bold = true, italic = false },
+        type = { italic = true },
+        variable = { italic = false },
       },
-      custom_highlights = function(colors)
-        local c = colors
+      colors = {
+        theme = {
+          dragon = {
+            ui = {
+              bg_gutter = "none",
+            },
+          },
+        },
+      },
+      overrides = function(colors)
+        local theme = colors.theme
 
-        -- 🌸 Paleta pastel más intensa
-        local pastel = {
-          rose = "#f0a1c2",
-          pink = "#f8c6d8",
-          peach = "#f8b88b",
-          mint = "#a7d9c4",
-          sky = "#7fc6f5",
-          cream = "#f6f1eb",
-          coral = "#f28fad",
-          lavender = "#c29fd6",
-          dark_pink = "#45313d",
+        -- 🌸 PALETA SAKURA PREMIUM (Más vibrante)
+        local sakura = {
+          bright_pink = "#ff7eb6", -- Rosa neón pastel
+          soft_pink = "#f8c6d8",
+          blossom = "#f0a1c2",
+          lavender = "#d4bbdf",
+          sky = "#a1d6f8", -- Azul más vivo
+          mint = "#b8e2d1",
+          peach = "#ffb86c",
+          white = "#ffffff",
+          selection = "#5a3f4d", -- Fondo de selección más claro
+          accent = "#f28fad",
         }
 
         return {
           -- =====================
-          -- UI BASE Y TEXTO GENERAL
+          -- UI BASE (Más contraste)
           -- =====================
-          -- Forzamos cursiva en el texto normal si el terminal lo soporta
-          Normal = { bg = "none", fg = pastel.cream, italic = true },
-          NormalFloat = { bg = "none" },
-          FloatBorder = { fg = pastel.pink },
-          SignColumn = { bg = "none" },
-          CursorLine = { bg = "none" },
-          StatusLine = { bg = "none", fg = pastel.rose },
+          Normal = { bg = "none", fg = sakura.white },
+          NormalFloat = { bg = "none", fg = sakura.soft_pink },
+          FloatBorder = { fg = sakura.blossom, bg = "none" },
+          CursorLine = { bg = "#2d2a2b" }, -- Sutil resalte de línea
+          CursorLineNr = { fg = sakura.bright_pink, bold = true },
+          LineNr = { fg = "#5a5255" },
+
+          -- Borde de división de ventanas
+          WinSeparator = { fg = sakura.selection, bold = true },
 
           -- =====================
-          -- LINE NUMBERS
+          -- SYNTAX (Brillante y Pastel)
           -- =====================
-          LineNr = { fg = pastel.lavender },
-          CursorLineNr = { fg = pastel.pink, bold = true },
+          Keyword = { fg = sakura.accent, italic = true, bold = true },
+          Statement = { fg = sakura.accent },
+          Conditional = { fg = sakura.accent, italic = true },
+
+          Function = { fg = sakura.sky, bold = true }, -- Funciones en azul cielo
+          Identifier = { fg = sakura.blossom },
+          Variable = { fg = sakura.soft_pink },
+
+          String = { fg = sakura.mint }, -- Strings en menta suave
+          Number = { fg = sakura.peach },
+          Boolean = { fg = sakura.peach, bold = true },
+
+          Type = { fg = sakura.lavender, italic = true },
+          Special = { fg = sakura.bright_pink },
+          Comment = { fg = "#6272a4", italic = true }, -- Comandos estilo Dracula para legibilidad
 
           -- =====================
-          -- SELECCIÓN
+          -- 🌸 NEO-TREE (Upgrade Visual)
           -- =====================
-          Visual = { bg = pastel.dark_pink },
-          VisualNOS = { bg = pastel.dark_pink },
+          NeoTreeNormal = { fg = sakura.soft_pink },
+          NeoTreeNormalNC = { fg = sakura.soft_pink },
+          NeoTreeRootName = { fg = sakura.bright_pink, bold = true },
+          NeoTreeDirectoryName = { fg = sakura.lavender },
+          NeoTreeDirectoryIcon = { fg = sakura.lavender },
+          NeoTreeExpander = { fg = sakura.accent },
 
-          -- =====================
-          -- VARIABLES / KEYS
-          -- =====================
-          ["@property"] = { fg = pastel.peach, bold = true },
-          ["@field"] = { fg = pastel.peach },
-          ["@variable"] = { fg = pastel.pink, italic = true },
-          ["@variable.builtin"] = { fg = pastel.pink, italic = true },
+          -- Archivos específicos
+          NeoTreeFileName = { fg = sakura.soft_pink },
+          NeoTreeSymbolicLinkTarget = { fg = sakura.sky },
 
-          -- =====================
-          -- FUNCIONES / KEYWORDS / TIPOS
-          -- =====================
-          ["@function"] = { fg = pastel.rose, bold = true, italic = true },
-          ["@keyword"] = { fg = pastel.rose, italic = true },
-          ["@type"] = { fg = pastel.sky, italic = true },
+          -- Git en Neo-Tree
+          NeoTreeGitAdded = { fg = sakura.mint },
+          NeoTreeGitModified = { fg = sakura.peach },
+          NeoTreeGitDeleted = { fg = sakura.accent },
 
           -- =====================
-          -- STRINGS / VALORES
+          -- TELESCOPE & OTHERS
           -- =====================
-          ["@string"] = { fg = pastel.mint },
-          ["@string.escape"] = { fg = pastel.sky },
-          ["@string.delimiter"] = { fg = pastel.pink },
-
-          ["@number"] = { fg = pastel.peach },
-          ["@boolean"] = { fg = pastel.mint, bold = true },
-          ["@constant"] = { fg = pastel.pink },
-
-          ["@operator"] = { fg = pastel.rose },
-          ["@comment"] = { fg = pastel.lavender, italic = true },
-
-          -- =====================
-          -- 🌸 NEO-TREE (TODO PINK)
-          -- =====================
-          NeoTreeNormal = { bg = "none", fg = pastel.pink },
-          NeoTreeNormalNC = { bg = "none", fg = pastel.pink },
-
-          NeoTreeRootName = { fg = pastel.pink, bold = true, italic = true },
-          NeoTreeDirectoryName = { fg = pastel.pink },
-          NeoTreeDirectoryIcon = { fg = pastel.pink },
-
-          NeoTreeFileName = { fg = pastel.pink },
-          NeoTreeFileIcon = { fg = pastel.pink },
-
-          NeoTreeExpander = { fg = pastel.pink },
-          NeoTreeIndentMarker = { fg = pastel.pink },
-
-          -- Estados de Git en el árbol (opcionalmente pink o mantener color)
-          NeoTreeGitAdded = { fg = pastel.pink },
-          NeoTreeGitModified = { fg = pastel.pink },
-          NeoTreeGitDeleted = { fg = pastel.coral },
+          TelescopeBorder = { fg = sakura.blossom },
+          TelescopePromptPrefix = { fg = sakura.bright_pink },
+          Pmenu = { bg = "#1a1819", fg = sakura.soft_pink }, -- Menú de autocompletado
+          PmenuSel = { bg = sakura.selection, fg = sakura.white },
         }
       end,
     },
-
     config = function(_, opts)
-      require("catppuccin").setup(opts)
-      vim.cmd("colorscheme catppuccin")
+      require("kanagawa").setup(opts)
+      vim.cmd("colorscheme kanagawa-dragon")
     end,
-  },
-
-  {
-    "LazyVim/LazyVim",
-    opts = {
-      colorscheme = "catppuccin",
-    },
   },
 }
