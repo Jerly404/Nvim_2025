@@ -31,7 +31,7 @@ Soy **Jerly**, estudiante de Ingeniería de Software (8vo ciclo) de Perú 🇵�
 ├── screenshots/         # Capturas de pantalla del setup
 ├── init.lua             # Punto de entrada
 └── lazy-lock.json       # Versiones fijas de los plugins
-📸 Galería (Screenshots)Dashboard PersonalizadoFlujo de Código<img src="./screenshots/dashboard_preview.png" width="450" alt="Dashboard"><img src="./screenshots/coding_preview.png" width="450" alt="Editor">🛠️ Instalación RápidaSi quieres probar mi configuración en tu máquina (asegúrate de respaldar tu carpeta nvim actual):Bash# 1. Clonar el repositorio
+📸 Galería (Screenshots)Dashboard PersonalizadoFlujo de Código<img src="./screenshots/nvim-1.png" width="450" alt="Dashboard"><img src="./screenshots/nvim-2.png" width="450" alt="Editor">🛠️ Instalación RápidaSi quieres probar mi configuración en tu máquina (asegúrate de respaldar tu carpeta nvim actual):Bash# 1. Clonar el repositorio
 git clone [https://github.com/Jerly404/nvim-config](https://github.com/Jerly404/nvim-config) ~/.config/nvim
 
 # 2. Abrir Neovim (Lazy instalará todo automáticamente)

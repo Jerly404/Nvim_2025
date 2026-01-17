@@ -6,11 +6,11 @@ return {
     priority = 1000,
     opts = {
       compile = true,
-      transparent = true, -- Mantiene la estética con el blur de Kitty
+      transparent = true,
       theme = "dragon",
       styles = {
         comment = { italic = true },
-        keyword = { italic = true, bold = true }, -- Más presencia
+        keyword = { italic = true, bold = true },
         function_ = { bold = true, italic = false },
         type = { italic = true },
         variable = { italic = false },
@@ -27,17 +27,16 @@ return {
       overrides = function(colors)
         local theme = colors.theme
 
-        -- 🌸 PALETA SAKURA PREMIUM (Más vibrante)
         local sakura = {
-          bright_pink = "#ff7eb6", -- Rosa neón pastel
+          bright_pink = "#ff7eb6",
           soft_pink = "#f8c6d8",
           blossom = "#f0a1c2",
           lavender = "#d4bbdf",
-          sky = "#a1d6f8", -- Azul más vivo
+          sky = "#a1d6f8",
           mint = "#b8e2d1",
           peach = "#ffb86c",
           white = "#ffffff",
-          selection = "#5a3f4d", -- Fondo de selección más claro
+          selection = "#5a3f4d",
           accent = "#f28fad",
         }
 
