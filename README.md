@@ -75,7 +75,3 @@ Node.js / Java (según el stack)
 
 💻 GitHub: @jerly404
 
-<p align="center"> Hecho con ❤️ en Perú 🇵🇪 por <b>Jerly</b> </p> ```
-💻 GitHub: @jerly404
-
-<p align="center"> Hecho con ❤️ en Perú 🇵🇪 por <b>Jerly</b> </p> ```
