@@ -48,6 +48,7 @@ Este setup está diseñado para ser mi herramienta principal de desarrollo **Ful
 ├── screenshots/         # Capturas del setup
 ├── init.lua             # Punto de entrada
 └── lazy-lock.json       # Versiones fijas de plugins
+```
 📸 Galería
 <p align="center"> <img src="./screenshots/nvim-1.png" width="450" alt="Dashboard"> <img src="./screenshots/nvim-2.png" width="450" alt="Editor"> </p>
 🛠️ Instalación Rápida
@@ -72,6 +73,9 @@ Node.js / Java (según el stack)
 🤝 Contacto
 📧 Email: jerly.condor@gmail.com
 
+💻 GitHub: @jerly404
+
+<p align="center"> Hecho con ❤️ en Perú 🇵🇪 por <b>Jerly</b> </p> ```
 💻 GitHub: @jerly404
 
 <p align="center"> Hecho con ❤️ en Perú 🇵🇪 por <b>Jerly</b> </p> ```
