@@ -1,21 +1,46 @@
--- ~/.config/nvim/lua/config/transparency.lua
 return {
   {
-    "folke/tokyonight.nvim",
+    "xiyaowong/transparent.nvim",
+    lazy = false,
     opts = {
-      transparent = true,
-      styles = {
-        sidebars = "transparent",
-        floats = "transparent",
+      extra_groups = {
+        -- Floating windows & popups
+        "NormalFloat",
+        "FloatBorder",
+        "FloatTitle",
+        "FloatFooter",
+
+        -- Neo-tree side panel explorer
+        "NeoTreeNormal",
+        "NeoTreeNormalNC",
+        "NeoTreeWinSeparator",
+        "NeoTreeEndOfBuffer",
+
+        -- Bufferline (Top tab bar)
+        "BufferLineFill",
+        "BufferLineBackground",
+        "BufferLineTab",
+        "BufferLineTabSelected",
+        "BufferLineBuffer",
+        "BufferLineBufferSelected",
+        "BufferLineSeparator",
+        "BufferLineSeparatorSelected",
+
+        -- Statusline
+        "StatusLine",
+        "StatusLineNC",
+
+        -- UI columns
+        "SignColumn",
+        "MsgArea",
+        "EndOfBuffer",
+        "WinSeparator",
       },
-    },
-  },
-  {
-    "nvim-treesitter/nvim-treesitter",
-    opts = {
-      highlight = {
-        enable = true,
-        additional_vim_regex_highlighting = false,
+      exclude_groups = {
+        -- Keep cursor line & visual selection visible
+        "CursorLine",
+        "CursorLineNr",
+        "Visual",
       },
     },
   },

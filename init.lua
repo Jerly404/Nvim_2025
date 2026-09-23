@@ -1,6 +1,10 @@
--- bootstrap lazy.nvim, LazyVim and your plugins
+-- 1. Configure Node.js environment
+pcall(function()
+  require("config.nodejs").setup({ silent = true })
+end)
+
+-- 2. Bootstrap lazy.nvim, LazyVim, and plugins
 require("config.lazy")
 
-vim.opt.wrap = true -- Habilita que el texto se ajuste a la ventana
-vim.opt.linebreak = true -- Evita cortar palabras a la mitad
-vim.opt.showbreak = "↳ " -- Indica visualmente cuando una línea se divide
+-- 3. Load custom highlights
+pcall(require, "config.highlights")

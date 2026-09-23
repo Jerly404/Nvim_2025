@@ -2,27 +2,30 @@ return {
   {
     "LazyVim/LazyVim",
     keys = {
-      -- Guardar + formatear
+      -- Format and save file with Ctrl+S (Normal & Insert mode), exiting to Normal mode
       {
         "<C-s>",
         function()
-          vim.lsp.buf.format()
-          vim.cmd("write")
+          vim.cmd("stopinsert")
+          if vim.fn.mode():find("[vV\x16]") then
+            vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<Esc>", true, false, true), "n", false)
+          end
+          LazyVim.format({ force = true })
+          vim.cmd("silent! write")
+          vim.notify("Formatted & Saved!", vim.log.levels.INFO, { title = "Format" })
         end,
-        desc = "Format and save buffer",
+        mode = { "n", "i", "v" },
+        desc = "Format and Save",
       },
 
-      -- Comentario tipo bloque SOLO en TypeScript
+      -- Block comment helper (<leader>cb)
       {
         "<leader>cb",
         function()
-          -- Inserta el bloque de comentario
           vim.api.nvim_put({ "/*", " * ", " */" }, "l", true, true)
-
-          -- Mueve el cursor a la línea del *
           vim.cmd("normal! kA")
         end,
-        desc = "Insert block comment",
+        desc = "Insert Block Comment",
         ft = {
           "javascript",
           "javascriptreact",

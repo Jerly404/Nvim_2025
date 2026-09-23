@@ -1,18 +1,14 @@
 return {
-
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ 1. MARKDOWN RENDER — Markdown hermoso y legible          │
-  -- ╰──────────────────────────────────────────────────────────╯
+  -- 1. Modern Markdown Rendering
   {
     "MeanderingProgrammer/render-markdown.nvim",
-    ft = { "markdown", "Avante" },
+    ft = { "markdown", "norg", "rmd", "org" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
     },
     opts = {
-      file_types = { "markdown", "Avante" },
-
+      file_types = { "markdown", "norg", "rmd", "org" },
       code = {
         sign = false,
         width = "block",
@@ -20,68 +16,57 @@ return {
         left_pad = 1,
         position = "center",
       },
-
       heading = {
         sign = false,
         position = "inline",
-        icons = {
-          "󰲡 ", -- 1
-          "󰲣 ", -- 2
-          "󰲥 ", -- 3
-          "󰲧 ", -- 4
-          "󰲩 ", -- 5
-          "󰲫 ", -- 6
-          "󰲭 ", -- 7
-          "󰲯 ", -- 8
-          "󰲱 ", -- 9
-          "󰲳 ", -- 10
-          "󰲵 ", -- 11
-          "󰲷 ", -- 12
-          "󰲹 ", -- 13
-          "󰲻 ", -- 14
-          "󰲽 ", -- 15
-        },
+        icons = { "󰲡 ", "󰲣 ", "󰲥 ", "󰲧 ", "󰲩 ", "󰲫 " },
       },
-
       bullet = {
         enabled = true,
         icons = { "●", "○", "◆", "◇", "▶" },
       },
-
       checkbox = {
         enabled = true,
-        unchecked = "󰄱 ",
-        checked = "󰄵 ",
+        unchecked = { icon = "󰄱 " },
+        checked = { icon = "󰄵 " },
         custom = {
           todo = { raw = "[-]", rendered = "󰥔 ", highlight = "RenderMarkdownTodo" },
         },
       },
+      pipe_table = {
+        preset = "round",
+        style = "full",
+      },
+      callout = {
+        note = { raw = "[!NOTE]", rendered = "󰋽 Note", highlight = "RenderMarkdownInfo" },
+        tip = { raw = "[!TIP]", rendered = "󰌶 Tip", highlight = "RenderMarkdownSuccess" },
+        important = { raw = "[!IMPORTANT]", rendered = "󰅾 Important", highlight = "RenderMarkdownHint" },
+        warning = { raw = "[!WARNING]", rendered = "󰀪 Warning", highlight = "RenderMarkdownWarn" },
+        caution = { raw = "[!CAUTION]", rendered = "󰳦 Caution", highlight = "RenderMarkdownError" },
+      },
     },
   },
 
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ 2. ZEN MODE — Modo enfoque absoluto                      │
-  -- ╰──────────────────────────────────────────────────────────╯
+  -- 2. Zen Mode — Focus Coding / Writing
   {
     "folke/zen-mode.nvim",
     cmd = "ZenMode",
     keys = {
-      { "<leader>zz", "<cmd>ZenMode<cr>", desc = "🧘 Zen Mode — Focus" },
+      { "<leader>zz", "<cmd>ZenMode<cr>", desc = "Zen Mode — Focus" },
     },
     opts = {
       window = {
         backdrop = 0.95,
-        width = 90,
-        height = 0.9,
+        width = 100,
+        height = 0.95,
         options = {
+          signcolumn = "no",
           number = false,
           relativenumber = false,
-          signcolumn = "no",
-          foldcolumn = "0",
           cursorline = false,
+          foldcolumn = "0",
         },
       },
-
       plugins = {
         options = {
           enabled = true,
@@ -95,14 +80,12 @@ return {
     },
   },
 
-  -- ╭──────────────────────────────────────────────────────────╮
-  -- │ 3. TWILIGHT — Enfoque en bloque actual                   │
-  -- ╰──────────────────────────────────────────────────────────╯
+  -- 3. Twilight — Dim Inactive Code Blocks
   {
     "folke/twilight.nvim",
     cmd = { "Twilight", "TwilightEnable", "TwilightDisable" },
     keys = {
-      { "<leader>tw", "<cmd>Twilight<cr>", desc = "🌙 Twilight — Focus block" },
+      { "<leader>tw", "<cmd>Twilight<cr>", desc = "Twilight — Focus Block" },
     },
     opts = {
       dimming = {
